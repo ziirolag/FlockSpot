@@ -1,0 +1,573 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A1B2C3D4E5F60001 /* FlockSpotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F61001 /* FlockSpotApp.swift */; };
+		A1B2C3D4E5F60002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F61002 /* ContentView.swift */; };
+		A1B2C3D4E5F60003 /* CompassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F61003 /* CompassView.swift */; };
+		A1B2C3D4E5F60004 /* CameraMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F61004 /* CameraMapView.swift */; };
+		A1B2C3D4E5F60005 /* FlockCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F61005 /* FlockCamera.swift */; };
+		A1B2C3D4E5F60006 /* FlockCameraStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F61006 /* FlockCameraStore.swift */; };
+		A1B2C3D4E5F60007 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F61007 /* LocationManager.swift */; };
+		A1B2C3D4E5F6000A /* DisclaimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6100A /* DisclaimerView.swift */; };
+		A1B2C3D4E5F6000C /* SharedCameraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6100B /* SharedCameraData.swift */; };
+		A1B2C3D4E5F6000D /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6100D /* CarPlaySceneDelegate.swift */; };
+		A1B2C3D4E5F6000F /* RouteNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F61010 /* RouteNavigationView.swift */; };
+		A1B2C3D4E5F6000E /* CarPlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6100E /* CarPlay.framework */; };
+		A1B2C3D4E5F60008 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F62001 /* Assets.xcassets */; };
+		A1B2C3D4E5F60009 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F62002 /* Preview Assets.xcassets */; };
+		A1B2C3D4E5F6000B /* FlockSpotWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C1C2D3D4E5F63001 /* FlockSpotWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C1C2D3D4E5F60001 /* FlockSpotWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C2D3D4E5F61001 /* FlockSpotWidget.swift */; };
+		C1C2D3D4E5F60002 /* CompassProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C2D3D4E5F61002 /* CompassProvider.swift */; };
+		C1C2D3D4E5F60003 /* CompassWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C2D3D4E5F61003 /* CompassWidgetView.swift */; };
+		C1C2D3D4E5F60004 /* RefreshIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C2D3D4E5F61004 /* RefreshIntent.swift */; };
+		C1C2D3D4E5F60005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1C2D3D4E5F62001 /* Assets.xcassets */; };
+		
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A1B2C3D4E5F6B001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1B2C3D4E5F68001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1C2D3D4E5F67001;
+			remoteInfo = FlockSpotWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A1B2C3D4E5F6D001 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A1B2C3D4E5F6000B /* FlockSpotWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A1B2C3D4E5F61001 /* FlockSpotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlockSpotApp.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F61002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F61003 /* CompassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassView.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F61004 /* CameraMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraMapView.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F61005 /* FlockCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlockCamera.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F61006 /* FlockCameraStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlockCameraStore.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F61007 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6100A /* DisclaimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerView.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6100B /* SharedCameraData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedCameraData.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6100D /* CarPlaySceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlaySceneDelegate.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F61010 /* RouteNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteNavigationView.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6100E /* CarPlay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarPlay.framework; path = System/Library/Frameworks/CarPlay.framework; sourceTree = SDKROOT; };
+		A1B2C3D4E5F6100F /* FlockSpot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlockSpot.entitlements; sourceTree = "<group>"; };
+		A1B2C3D4E5F62001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1B2C3D4E5F62002 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A1B2C3D4E5F63001 /* FlockSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlockSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B2C3D4E5F64001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1C2D3D4E5F61001 /* FlockSpotWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlockSpotWidget.swift; sourceTree = "<group>"; };
+		C1C2D3D4E5F61002 /* CompassProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassProvider.swift; sourceTree = "<group>"; };
+		C1C2D3D4E5F61003 /* CompassWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassWidgetView.swift; sourceTree = "<group>"; };
+		C1C2D3D4E5F61004 /* RefreshIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshIntent.swift; sourceTree = "<group>"; };
+		C1C2D3D4E5F6100F /* FlockSpotWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlockSpotWidget.entitlements; sourceTree = "<group>"; };
+		C1C2D3D4E5F61005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1C2D3D4E5F62001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C1C2D3D4E5F63001 /* FlockSpotWidget.appex */ = {isa = PBXFileReference; explicitFileType = "plug-in"; includeInIndex = 0; path = FlockSpotWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1B2C3D4E5F65001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3D4E5F6000E /* CarPlay.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1C2D3D4E5F65001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A1B2C3D4E5F66001 = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F66002 /* FlockSpot */,
+				C1C2D3D4E5F66002 /* FlockSpotWidget */,
+				A1B2C3D4E5F66004 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F66002 /* FlockSpot */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F61001 /* FlockSpotApp.swift */,
+				A1B2C3D4E5F61002 /* ContentView.swift */,
+				A1B2C3D4E5F61003 /* CompassView.swift */,
+				A1B2C3D4E5F61004 /* CameraMapView.swift */,
+				A1B2C3D4E5F61005 /* FlockCamera.swift */,
+				A1B2C3D4E5F61006 /* FlockCameraStore.swift */,
+				A1B2C3D4E5F61007 /* LocationManager.swift */,
+				A1B2C3D4E5F6100A /* DisclaimerView.swift */,
+				A1B2C3D4E5F6100B /* SharedCameraData.swift */,
+				A1B2C3D4E5F6100D /* CarPlaySceneDelegate.swift */,
+				A1B2C3D4E5F61010 /* RouteNavigationView.swift */,
+				A1B2C3D4E5F6100F /* FlockSpot.entitlements */,
+				A1B2C3D4E5F64001 /* Info.plist */,
+				A1B2C3D4E5F66003 /* Preview Content */,
+				A1B2C3D4E5F62001 /* Assets.xcassets */,
+			);
+			path = FlockSpot;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F66003 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F62002 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A1B2C3D4E5F66004 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F63001 /* FlockSpot.app */,
+				C1C2D3D4E5F63001 /* FlockSpotWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C1C2D3D4E5F66002 /* FlockSpotWidget */ = {
+			isa = PBXGroup;
+			children = (
+				C1C2D3D4E5F61001 /* FlockSpotWidget.swift */,
+				C1C2D3D4E5F61002 /* CompassProvider.swift */,
+				C1C2D3D4E5F61003 /* CompassWidgetView.swift */,
+				C1C2D3D4E5F61004 /* RefreshIntent.swift */,
+				C1C2D3D4E5F6100F /* FlockSpotWidget.entitlements */,
+				C1C2D3D4E5F61005 /* Info.plist */,
+				C1C2D3D4E5F62001 /* Assets.xcassets */,
+			);
+			path = FlockSpotWidget;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1B2C3D4E5F67001 /* FlockSpot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1B2C3D4E5F69001 /* Build configuration list for PBXNativeTarget "FlockSpot" */;
+			buildPhases = (
+				A1B2C3D4E5F65002 /* Sources */,
+				A1B2C3D4E5F65001 /* Frameworks */,
+				A1B2C3D4E5F65003 /* Resources */,
+				A1B2C3D4E5F6D001 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1B2C3D4E5F6C001 /* PBXTargetDependency */,
+			);
+			name = FlockSpot;
+			productName = FlockSpot;
+			productReference = A1B2C3D4E5F63001 /* FlockSpot.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C1C2D3D4E5F67001 /* FlockSpotWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C1C2D3D4E5F69001 /* Build configuration list for PBXNativeTarget "FlockSpotWidget" */;
+			buildPhases = (
+				C1C2D3D4E5F65002 /* Sources */,
+				C1C2D3D4E5F65001 /* Frameworks */,
+				C1C2D3D4E5F65003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlockSpotWidget;
+			productName = FlockSpotWidget;
+			productReference = C1C2D3D4E5F63001 /* FlockSpotWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXTargetDependency section */
+		A1B2C3D4E5F6C001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1C2D3D4E5F67001 /* FlockSpotWidget */;
+			targetProxy = A1B2C3D4E5F6B001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXProject section */
+		A1B2C3D4E5F68001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					A1B2C3D4E5F67001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					C1C2D3D4E5F67001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = A1B2C3D4E5F69002 /* Build configuration list for PBXProject "FlockSpot" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A1B2C3D4E5F66001;
+			productRefGroup = A1B2C3D4E5F66004 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1B2C3D4E5F67001 /* FlockSpot */,
+				C1C2D3D4E5F67001 /* FlockSpotWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1B2C3D4E5F65003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3D4E5F60008 /* Assets.xcassets in Resources */,
+				A1B2C3D4E5F60009 /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1C2D3D4E5F65003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1C2D3D4E5F60005 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1B2C3D4E5F65002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3D4E5F60001 /* FlockSpotApp.swift in Sources */,
+				A1B2C3D4E5F60002 /* ContentView.swift in Sources */,
+				A1B2C3D4E5F60003 /* CompassView.swift in Sources */,
+				A1B2C3D4E5F60004 /* CameraMapView.swift in Sources */,
+				A1B2C3D4E5F60005 /* FlockCamera.swift in Sources */,
+				A1B2C3D4E5F60006 /* FlockCameraStore.swift in Sources */,
+				A1B2C3D4E5F60007 /* LocationManager.swift in Sources */,
+				A1B2C3D4E5F6000A /* DisclaimerView.swift in Sources */,
+				A1B2C3D4E5F6000C /* SharedCameraData.swift in Sources */,
+				A1B2C3D4E5F6000D /* CarPlaySceneDelegate.swift in Sources */,
+				A1B2C3D4E5F6000F /* RouteNavigationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1C2D3D4E5F65002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1C2D3D4E5F60001 /* FlockSpotWidget.swift in Sources */,
+				C1C2D3D4E5F60002 /* CompassProvider.swift in Sources */,
+				C1C2D3D4E5F60003 /* CompassWidgetView.swift in Sources */,
+				C1C2D3D4E5F60004 /* RefreshIntent.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A1B2C3D4E5F6A001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = DVKH6SYN25;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A1B2C3D4E5F6A002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = DVKH6SYN25;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A1B2C3D4E5F6A003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlockSpot/FlockSpot.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlockSpot/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlockSpot;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flocksafety.FlockSpot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A1B2C3D4E5F6A004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlockSpot/FlockSpot.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlockSpot/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlockSpot;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flocksafety.FlockSpot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C1C2D3D4E5F6A001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlockSpotWidget/FlockSpotWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DVKH6SYN25;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FlockSpotWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "FlockSpot Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.flocksafety.FlockSpot;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flocksafety.FlockSpot.FlockSpotWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C1C2D3D4E5F6A002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FlockSpotWidget/FlockSpotWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DVKH6SYN25;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FlockSpotWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "FlockSpot Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.flocksafety.FlockSpot;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flocksafety.FlockSpot.FlockSpotWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A1B2C3D4E5F69001 /* Build configuration list for PBXNativeTarget "FlockSpot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D4E5F6A003 /* Debug */,
+				A1B2C3D4E5F6A004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1B2C3D4E5F69002 /* Build configuration list for PBXProject "FlockSpot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D4E5F6A001 /* Debug */,
+				A1B2C3D4E5F6A002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C1C2D3D4E5F69001 /* Build configuration list for PBXNativeTarget "FlockSpotWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1C2D3D4E5F6A001 /* Debug */,
+				C1C2D3D4E5F6A002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A1B2C3D4E5F68001 /* Project object */;
+}
