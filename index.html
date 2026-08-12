@@ -272,6 +272,96 @@
             color: var(--accent-blue);
         }
 
+        /* Mock App UI Screens styling */
+        .phone-frame {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            padding: 8px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #fff;
+        }
+
+        .phone-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-bottom: 8px;
+            padding: 0 4px;
+        }
+
+        .phone-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .phone-bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .nav-item-mock {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .nav-item-mock.active {
+            color: var(--accent-blue);
+        }
+
+        /* Custom widgets */
+        .radar-center {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 160px;
+            height: 160px;
+            border: 1px solid rgba(69, 243, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .radar-sweep {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, rgba(69, 243, 255, 0.15) 0%, transparent 80%);
+            border-radius: 80px 0 0 0;
+            transform-origin: bottom right;
+            bottom: 50%;
+            right: 50%;
+            animation: sweep 4s linear infinite;
+        }
+
+        @keyframes sweep {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .nav-card-premium {
+            background: rgba(31, 40, 51, 0.85);
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 8px;
+        }
+
+
         .sidebar-tabs {
             display: flex;
             flex-direction: column;
@@ -516,46 +606,112 @@
         
         function renderCompass() {
             showcase.innerHTML = `
-                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; position:relative;">
-                    <div style="width: 140px; height: 140px; border: 4px solid var(--accent-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; animation: pulse 2s infinite;">
-                        <div style="width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-bottom: 40px solid var(--accent-red); transform: rotate(45deg);"></div>
+                <div class="phone-frame">
+                    <div class="phone-header">
+                        <span>5:00 🧭</span>
+                        <span>100% 🔋</span>
                     </div>
-                    <div style="margin-top: 20px; font-family:'Space Grotesk', sans-serif; font-size:1.1rem; color:var(--accent-red); font-weight:700;">Nearest ALPR: 240 m</div>
-                    <div style="font-size:0.85rem; color:var(--text-muted);">Heading North-East</div>
+                    <div class="phone-content" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                        <div class="radar-center">
+                            <div class="radar-sweep"></div>
+                            <div style="width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-bottom: 40px solid var(--accent-red); transform: rotate(55deg); filter: drop-shadow(0 0 8px var(--accent-red));"></div>
+                        </div>
+                        <div style="margin-top: auto; margin-bottom: 24px; text-align: center; z-index: 10;">
+                            <div class="nav-card-premium" style="border-color: var(--accent-red);">
+                                <div style="font-family:'Space Grotesk', sans-serif; font-size:1.2rem; color:var(--accent-red); font-weight:700;">Nearest ALPR: 240 m</div>
+                                <div style="font-size:0.8rem; color:var(--text-muted); margin-top: 2px;">Heading North-East (45°)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phone-bottom-nav">
+                        <span class="nav-item-mock active">🧭 Compass</span>
+                        <span class="nav-item-mock">🚗 Route</span>
+                        <span class="nav-item-mock">🗺️ Map</span>
+                    </div>
                 </div>
             `;
         }
 
         function renderRouter() {
             showcase.innerHTML = `
-                <div class="nav-alert-card">
-                    <div class="alert-icon">⚠️</div>
-                    <div>
-                        <strong style="color:#fff; font-size:0.9rem;">Camera Avoidance Active</strong>
-                        <p style="font-size:0.75rem; color:var(--text-muted);">Valhalla bypassed 3 ALPR checkpoints on this route.</p>
+                <div class="phone-frame">
+                    <div class="phone-header">
+                        <span>5:00 🧭</span>
+                        <span>100% 🔋</span>
+                    </div>
+                    <div class="phone-content">
+                        <div class="nav-card-premium" style="border-color: var(--accent-blue);">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <div>
+                                    <strong style="color:#fff; font-size:0.9rem;">Turn Right on Grand Ave</strong>
+                                    <p style="font-size:0.75rem; color:var(--text-muted); margin-top: 2px;">Avoidance routing active — Bypassed 3 scanners</p>
+                                </div>
+                                <span style="font-size: 1.5rem; color: var(--accent-blue);">↪️</span>
+                            </div>
+                        </div>
+                        
+                        <div style="flex:1; position:relative; background:#12161a; border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.05);">
+                            <!-- Grid background lines -->
+                            <div style="left:30%;" class="grid-line grid-v"></div>
+                            <div style="left:60%;" class="grid-line grid-v"></div>
+                            <div style="top:30%;" class="grid-line grid-h"></div>
+                            <div style="top:60%;" class="grid-line grid-h"></div>
+                            
+                            <svg class="mock-route" viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute; width:100%; height:100%; top:0; left:0;">
+                                <path d="M 20 85 C 40 85, 30 35, 80 20" />
+                            </svg>
+                            <div class="mock-user-dot" style="top:78%; left:17%;"></div>
+                            
+                            <!-- Excluded Camera -->
+                            <div class="mock-camera" style="top:45%; left:45%;"></div>
+                            <div class="mock-camera-cone" style="top:45%; left:45%; transform: rotate(140deg);"></div>
+                        </div>
+                    </div>
+                    <div class="phone-bottom-nav">
+                        <span class="nav-item-mock">🧭 Compass</span>
+                        <span class="nav-item-mock active">🚗 Route</span>
+                        <span class="nav-item-mock">🗺️ Map</span>
                     </div>
                 </div>
-                <svg class="mock-route" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <path d="M 20 80 Q 40 20 80 30" />
-                </svg>
-                <div class="mock-user-dot" style="top:75%; left:20%;"></div>
-                
-                <!-- Bypassed cameras -->
-                <div class="mock-camera" style="top:25%; left:45%;"></div>
-                <div class="mock-camera-cone" style="top:25%; left:45%; transform: rotate(140deg);"></div>
             `;
         }
 
         function renderMap() {
             showcase.innerHTML = `
-                <div class="mock-user-dot" style="top:50%; left:50%; transform:translate(-50%,-50%);"></div>
-                <div style="position:absolute; width:100px; height:100px; border: 1px dashed var(--accent-blue); border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%); opacity:0.3;"></div>
-                
-                <div class="mock-camera" style="top:30%; left:70%;"></div>
-                <div class="mock-camera-cone" style="top:30%; left:70%; transform: rotate(30deg);"></div>
-                
-                <div class="mock-camera" style="top:65%; left:25%;"></div>
-                <div class="mock-camera-cone" style="top:65%; left:25%; transform: rotate(240deg);"></div>
+                <div class="phone-frame">
+                    <div class="phone-header">
+                        <span>5:00 🧭</span>
+                        <span>100% 🔋</span>
+                    </div>
+                    <div class="phone-content" style="background:#12161a; border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.05);">
+                        <!-- Grid background lines -->
+                        <div style="left:25%;" class="grid-line grid-v"></div>
+                        <div style="left:50%;" class="grid-line grid-v"></div>
+                        <div style="left:75%;" class="grid-line grid-v"></div>
+                        <div style="top:33%;" class="grid-line grid-h"></div>
+                        <div style="top:66%;" class="grid-line grid-h"></div>
+                        
+                        <div class="mock-user-dot" style="top:50%; left:50%; transform:translate(-50%,-50%);"></div>
+                        <div style="position:absolute; width:120px; height:120px; border: 1px dashed var(--accent-blue); border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%); opacity:0.25;"></div>
+                        
+                        <!-- Cameras with FOV Cones -->
+                        <div class="mock-camera" style="top:25%; left:65%;"></div>
+                        <div class="mock-camera-cone" style="top:25%; left:65%; transform: rotate(45deg);"></div>
+                        
+                        <div class="mock-camera" style="top:60%; left:30%;"></div>
+                        <div class="mock-camera-cone" style="top:60%; left:30%; transform: rotate(220deg);"></div>
+                        
+                        <div class="nav-card-premium" style="position:absolute; bottom:10px; left:10px; right:10px; margin-bottom:0;">
+                            <span style="font-size:0.8rem; font-weight:600;">ALPR Scanner Detected</span>
+                            <p style="font-size:0.7rem; color:var(--text-muted); margin-top:2px;">Type: Fixed Mount | Operator: City Police</p>
+                        </div>
+                    </div>
+                    <div class="phone-bottom-nav">
+                        <span class="nav-item-mock">🧭 Compass</span>
+                        <span class="nav-item-mock">🚗 Route</span>
+                        <span class="nav-item-mock active">🗺️ Map</span>
+                    </div>
+                </div>
             `;
         }
 
