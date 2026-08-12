@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlockSpot GPS — Privacy-Focused Route Navigation & ALPR Detection</title>
+    <meta name="description" content="Take control of your driving privacy. FlockSpot GPS detects ALPR cameras, constructs routes that avoid them using Valhalla routing, and keeps you aware of local surveillance.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0c10;
+            --bg-secondary: #1f2833;
+            --accent-blue: #45f3ff;
+            --accent-blue-dim: rgba(69, 243, 255, 0.15);
+            --accent-red: #ff3b30;
+            --accent-red-dim: rgba(255, 59, 48, 0.15);
+            --text-main: #f5f5f7;
+            --text-muted: #c5c6c7;
+            --glass-bg: rgba(31, 40, 51, 0.6);
+            --glass-border: rgba(69, 243, 255, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Glow Objects */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.3;
+        }
+        .glow-1 {
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: var(--accent-blue);
+        }
+        .glow-2 {
+            top: 600px;
+            left: -200px;
+            width: 500px;
+            height: 500px;
+            background: var(--accent-red);
+        }
+
+        /* Header / Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-blue);
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 85vh;
+            padding: 0 10% 4rem;
+            position: relative;
+        }
+
+        .hero-badge {
+            background: var(--accent-blue-dim);
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(69, 243, 255, 0.1);
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            max-width: 900px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(180deg, #fff 30%, #a5a6a7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h1 span {
+            color: var(--accent-blue);
+            -webkit-text-fill-color: var(--accent-blue);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        /* UI Showcase Graphic */
+        .showcase-container {
+            width: 100%;
+            max-width: 1000px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 24px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 24px;
+            text-align: left;
+        }
+
+        .mock-map {
+            background-color: #12161a;
+            border-radius: 16px;
+            height: 380px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .grid-line {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+        .grid-v { width: 1px; height: 100%; top: 0; }
+        .grid-h { height: 1px; width: 100%; left: 0; }
+
+        /* Simulated route */
+        .mock-route {
+            position: absolute;
+            width: 70%;
+            height: 60%;
+            top: 20%;
+            left: 15%;
+            stroke: var(--accent-blue);
+            stroke-width: 6;
+            stroke-linecap: round;
+            fill: none;
+            filter: drop-shadow(0 0 8px var(--accent-blue));
+        }
+
+        .mock-user-dot {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: #fff;
+            border: 3px solid var(--accent-blue);
+            border-radius: 50%;
+            top: 73%;
+            left: 20%;
+            box-shadow: 0 0 15px var(--accent-blue);
+        }
+
+        /* Mock Camera Indicators */
+        .mock-camera {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: var(--accent-red-dim);
+            border: 2px solid var(--accent-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(255, 59, 48, 0.3);
+        }
+        .mock-camera::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent-red);
+            border-radius: 50%;
+        }
+
+        .mock-camera-cone {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 45px solid rgba(255, 59, 48, 0.15);
+            transform-origin: top center;
+        }
+
+        .nav-alert-card {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(31, 40, 51, 0.95);
+            border: 1px solid var(--accent-blue);
+            border-radius: 12px;
+            padding: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .alert-icon {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+        }
+
+        .sidebar-tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .tab-button {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 14px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .tab-button.active, .tab-button:hover {
+            background: var(--accent-blue-dim);
+            border-color: var(--accent-blue);
+            color: #fff;
+        }
+
+        .tab-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .tab-subtitle {
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 6rem 5% 4rem;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        /* Technical Specs Section */
+        .specs {
+            padding: 6rem 5%;
+            background: radial-gradient(circle at center, #131a22 0%, var(--bg-primary) 100%);
+            border-top: 1px solid rgba(255,255,255,0.03);
+            text-align: center;
+        }
+
+        .specs h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .spec-item h4 {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .spec-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            padding: 4rem 5%;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media(max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .showcase-container { grid-template-columns: 1fr; }
+            .sidebar-tabs { flex-direction: row; overflow-x: auto; padding-bottom: 8px; }
+            .tab-button { flex: 0 0 160px; }
+            header { flex-direction: column; gap: 1rem; }
+            footer { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow-orb glow-1"></div>
+    <div class="glow-orb glow-2"></div>
+
+    <header>
+        <div class="logo">
+            <span class="logo-dot"></span> FlockSpot GPS
+        </div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#specs">Specifications</a></li>
+            <li><a href="https://github.com/ziirolag/FlockSpot" target="_blank">View GitHub</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-badge">Surveillance Awareness</div>
+            <h1>Drive Free. Drive Informed.<br>Avoid <span>ALPR Cameras</span>.</h1>
+            <p>A premium privacy-preserving utility for iOS. FlockSpot checks real-time location metrics, maps Automatic License Plate Reader networks, and customizes routes to maintain privacy.</p>
+
+            <div class="showcase-container">
+                <!-- Interactive / Dynamic Mockup Area -->
+                <div class="mock-map" id="showcase-map">
+                    <!-- Grid background lines -->
+                    <div style="left:20%;" class="grid-line grid-v"></div>
+                    <div style="left:40%;" class="grid-line grid-v"></div>
+                    <div style="left:60%;" class="grid-line grid-v"></div>
+                    <div style="left:80%;" class="grid-line grid-v"></div>
+                    <div style="top:25%;" class="grid-line grid-h"></div>
+                    <div style="top:50%;" class="grid-line grid-h"></div>
+                    <div style="top:75%;" class="grid-line grid-h"></div>
+
+                    <!-- Elements are updated dynamically by JavaScript selection -->
+                    <div id="dynamic-element"></div>
+                </div>
+
+                <!-- Tab selectors -->
+                <div class="sidebar-tabs">
+                    <button class="tab-button active" onclick="switchTab(0, this)">
+                        <div class="tab-title">Compass Mode</div>
+                        <div class="tab-subtitle">Target-pointed radar UI</div>
+                    </button>
+                    <button class="tab-button" onclick="switchTab(1, this)">
+                        <div class="tab-title">Avoidance Router</div>
+                        <div class="tab-subtitle">Camera-free route calculations</div>
+                    </button>
+                    <button class="tab-button" onclick="switchTab(2, this)">
+                        <div class="tab-title">Live Map</div>
+                        <div class="tab-subtitle">Camera overlays & FOV cones</div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>ALPR Camera Avoidance</h3>
+                <p>Calculates routes that actively avoid Automatic License Plate Reader networks. Uses Valhalla routing endpoints with dynamically generated exclusion zones.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧭</div>
+                <h3>Target Compass</h3>
+                <p>Shows a persistent compass overlay pointing exactly toward the nearest surveillance scanner, maintaining a live indicator of nearby infrastructure.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚗</div>
+                <h3>CarPlay Integration</h3>
+                <p>Includes a dedicated template for vehicle CarPlay displays, providing active alert interfaces and a listing of the closest camera points.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔊</div>
+                <h3>Voice Navigation</h3>
+                <p>Features step-by-step turn guidance and system voice synthesizers to announce avoidance updates and route changes.</p>
+            </div>
+        </section>
+
+        <!-- Stats / Specs Section -->
+        <section id="specs" class="specs">
+            <h2>Under The Hood</h2>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <h4>SwiftUI</h4>
+                    <p>Interface Framework</p>
+                </div>
+                <div class="spec-item">
+                    <h4>Overpass</h4>
+                    <p>Real-Time OSM Scanner</p>
+                </div>
+                <div class="spec-item">
+                    <h4>Valhalla</h4>
+                    <p>Avoidance Routing Engine</p>
+                </div>
+                <div class="spec-item">
+                    <h4>WidgetKit</h4>
+                    <p>Glanceable Radar Widget</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 FlockSpot GPS. Built for private journeys.</p>
+        <p><a href="https://github.com/ziirolag/FlockSpot" style="color:var(--text-muted); text-decoration:none;">GitHub Repository</a></p>
+    </footer>
+
+    <script>
+        // Setup initial view
+        const showcase = document.getElementById('dynamic-element');
+        
+        function renderCompass() {
+            showcase.innerHTML = `
+                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; position:relative;">
+                    <div style="width: 140px; height: 140px; border: 4px solid var(--accent-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; animation: pulse 2s infinite;">
+                        <div style="width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-bottom: 40px solid var(--accent-red); transform: rotate(45deg);"></div>
+                    </div>
+                    <div style="margin-top: 20px; font-family:'Space Grotesk', sans-serif; font-size:1.1rem; color:var(--accent-red); font-weight:700;">Nearest ALPR: 240 m</div>
+                    <div style="font-size:0.85rem; color:var(--text-muted);">Heading North-East</div>
+                </div>
+            `;
+        }
+
+        function renderRouter() {
+            showcase.innerHTML = `
+                <div class="nav-alert-card">
+                    <div class="alert-icon">⚠️</div>
+                    <div>
+                        <strong style="color:#fff; font-size:0.9rem;">Camera Avoidance Active</strong>
+                        <p style="font-size:0.75rem; color:var(--text-muted);">Valhalla bypassed 3 ALPR checkpoints on this route.</p>
+                    </div>
+                </div>
+                <svg class="mock-route" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <path d="M 20 80 Q 40 20 80 30" />
+                </svg>
+                <div class="mock-user-dot" style="top:75%; left:20%;"></div>
+                
+                <!-- Bypassed cameras -->
+                <div class="mock-camera" style="top:25%; left:45%;"></div>
+                <div class="mock-camera-cone" style="top:25%; left:45%; transform: rotate(140deg);"></div>
+            `;
+        }
+
+        function renderMap() {
+            showcase.innerHTML = `
+                <div class="mock-user-dot" style="top:50%; left:50%; transform:translate(-50%,-50%);"></div>
+                <div style="position:absolute; width:100px; height:100px; border: 1px dashed var(--accent-blue); border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%); opacity:0.3;"></div>
+                
+                <div class="mock-camera" style="top:30%; left:70%;"></div>
+                <div class="mock-camera-cone" style="top:30%; left:70%; transform: rotate(30deg);"></div>
+                
+                <div class="mock-camera" style="top:65%; left:25%;"></div>
+                <div class="mock-camera-cone" style="top:65%; left:25%; transform: rotate(240deg);"></div>
+            `;
+        }
+
+        function switchTab(index, btn) {
+            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            if(index === 0) renderCompass();
+            if(index === 1) renderRouter();
+            if(index === 2) renderMap();
+        }
+
+        // Init
+        renderCompass();
+    </script>
+</body>
+</html>
